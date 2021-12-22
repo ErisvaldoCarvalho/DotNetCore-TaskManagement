@@ -1,10 +1,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 
 namespace WebApp.TaskManagement
 {
@@ -22,21 +20,21 @@ namespace WebApp.TaskManagement
         {
             services.AddRazorPages();
             
-            services.AddSwaggerGen(C =>
-            {
-                C.SwaggerDoc("V1", new Microsoft.OpenApi.Models.OpenApiInfo
-                {
-                    Title = "Task Management",
-                    Version = "v1",
-                    Description = "Projeto de gestão de tarefas",
-                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
-                    {
-                        Name = "Erisvaldo Carvalho",
-                        Email = "contato@erisvaldocarvalhosilva.com.br",
-                        Url = new Uri("https://github.com/ErisvaldoCarvalho")
-                    }
-                });
-            });
+            //services.AddSwaggerGen(C =>
+            //{
+            //    C.SwaggerDoc("V1", new Microsoft.OpenApi.Models.OpenApiInfo
+            //    {
+            //        Title = "Task Management",
+            //        Version = "v1",
+            //        Description = "Projeto de gestão de tarefas",
+            //        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+            //        {
+            //            Name = "Erisvaldo Carvalho",
+            //            Email = "contato@erisvaldocarvalhosilva.com.br",
+            //            Url = new Uri("https://github.com/ErisvaldoCarvalho")
+            //        }
+            //    });
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,16 +53,16 @@ namespace WebApp.TaskManagement
 
             app.UseRouting();
 
-            app.UseSwagger();
+            //app.UseSwagger();
 
-            app.UseSwaggerUI(c => {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json",
-                    "Task Management");
-            });
+            //app.UseSwaggerUI(c => {
+            //    c.SwaggerEndpoint("/swagger/v1/swagger.json",
+            //        "Task Management");
+            //});
 
-            var option = new RewriteOptions();
-            option.AddRedirect("^$", "swagger");
-            app.UseRewriter(option);
+            //var option = new RewriteOptions();
+            //option.AddRedirect("^$", "swagger");
+            //app.UseRewriter(option);
 
             app.UseAuthorization();
 
@@ -75,7 +73,6 @@ namespace WebApp.TaskManagement
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapRazorPages();
                 endpoints.MapControllers();
                 endpoints.MapControllerRoute("DefaultApi", "{controller=values}/{id?}");
             });
