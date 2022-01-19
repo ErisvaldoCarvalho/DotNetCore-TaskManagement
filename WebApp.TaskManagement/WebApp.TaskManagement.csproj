@@ -5,6 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="db\dataset\V1__Populate_table_task.sql" />
+    <None Remove="db\migrations\V1__Create_table_task.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="db\dataset\V1__Populate_table_task.sql" />
+    <Compile Include="db\migrations\V1__Create_table_task.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
